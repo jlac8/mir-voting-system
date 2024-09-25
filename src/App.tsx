@@ -69,14 +69,24 @@ function App() {
         </aside>
         <section className="votes">
           <section>
-            <h2>Total de Votos: 400</h2>
+            <h2>
+              Total de Votos: <span>400</span>
+            </h2>
           </section>
           <section>
             <h2>Resultados</h2>
-            <p>Candidato 1: 100</p>
-            <p>Candidato 2: 100</p>
-            <p>Candidato 3: 100</p>
-            <p>Candidato 4: 100</p>
+            <p>
+              Candidato 1: <span>100</span>
+            </p>
+            <p>
+              Candidato 2: <span>100</span>
+            </p>
+            <p>
+              Candidato 3: <span>100</span>
+            </p>
+            <p>
+              Candidato 4: <span>100</span>
+            </p>
           </section>
         </section>
       </section>
