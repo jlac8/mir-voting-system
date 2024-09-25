@@ -1,0 +1,19 @@
+.candidates {
+  display: flex;
+  gap: 20px;
+}
+
+.results {
+  display: flex;
+  gap: 30px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.votes {
+  flex-grow: 1;
+}
