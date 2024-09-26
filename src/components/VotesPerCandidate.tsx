@@ -1,19 +1,17 @@
+import { useCandidates } from "./Context";
+
 function VotesPerCandidate() {
+  const { candidates } = useCandidates();
   return (
     <section>
       <h2>Resultados</h2>
-      <p>
-        Candidato 1: <span>100</span>
-      </p>
-      <p>
-        Candidato 2: <span>100</span>
-      </p>
-      <p>
-        Candidato 3: <span>100</span>
-      </p>
-      <p>
-        Candidato 4: <span>100</span>
-      </p>
+      {candidates.map((candidate) => {
+        return (
+          <p>
+            {candidate.name}: {candidate.votes}
+          </p>
+        );
+      })}
     </section>
   );
 }
