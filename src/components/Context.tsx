@@ -64,9 +64,9 @@ export const CandidatesProvider = ({ children }: { children: ReactNode }) => {
 
   function selectAllCandidates(): void {
     if (selectedCandidates.length === candidates.length) {
-      setSelectedCandidates([]); // Deselect all
+      setSelectedCandidates([]);
     } else {
-      setSelectedCandidates(candidates.map((candidate) => candidate.name)); // Select all
+      setSelectedCandidates(candidates.map((candidate) => candidate.name));
     }
   }
 

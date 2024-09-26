@@ -1,7 +1,6 @@
-# Make It Real - Sistema de votaciones
+# Make It Real - Voting System
 
-This is a solution to the **Sistema de votaciones
-** project of the Make It Real course.
+This is a solution to the **Voting System** project of the Make It Real course.
 
 ## Table of contents
 
@@ -20,66 +19,70 @@ This is a solution to the **Sistema de votaciones
 
 ### The challenge
 
-este sistema tendra 4 candidatos,
-cada uno sera un componente que debera permitir realizar el voto por el candidato correspondiente.
-Un component TotalVotos que debe mostrar el numero total de votos.
-Componente VotosIndividuales que debera mostrar el resultado de los votos de forma individual de los candidatos. Estos pueden ser en numero o porcentaje, dependiendo del filtro q el usuario elija.
-Componente Filtro el cual va permitir al usuario mostrar si quiere ver los resultuados indivudales de forma porcentual o numerica (totales), ademas de seleccionar que Candidatos queremos ver en los resultados.
-El sistema debe calcular el porcentaje para cada candidato de forma automatica cada que se agregue un nuevo voto.
+- This system features 4 candidates, each represented by a component that allows users to cast votes for the corresponding candidate.
+- A TotalVotes component that displays the total number of votes.
+- A VotesPerCandidate component that shows individual voting results for each candidate. These can be displayed either as numbers or percentages, depending on the user's filter selection.
+- A Filter component that allows users to toggle between viewing results as percentages or as totals. Additionally, users can select which candidates' results to display.
+- The system automatically calculates the percentage for each candidate whenever a new vote is added.
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+![](./ss-voting-system.png)
 
 ## My process
 
-1. Estructura con HTML y CSS
-2. Funcionalidad de votar
-3. Funcionalidad para ver votos
-4. Funcionalidad para filtrar
+1. Structure the HTML and CSS.
+2. Implement voting functionality.
+3. Add functionality to view votes.
+4. Add filtering functionality to customize the display.
 
 ### Built with
 
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- Mobile-first workflow
-- useContext
+- React's useContext
+- React's useState
+- React's useEffect
 
 ### What I learned
 
-HTML form options
+Handling input elements in HTML:
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<label htmlFor="selectAll">Todos:</label> <input type="checkbox" id="selectAll"
+name="selectAll" onChange={selectAllCandidates}
+checked={selectedCandidates.length === candidates.length} />
 ```
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+Using React's useContext to manage global state:
 
 ```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+function App() {
+  return (
+    <main>
+      <CandidatesProvider>
+        <Candidates />
+        <section className="results">
+          <Filter />
+          <section className="votes">
+            <TotalVotes />
+            <VotesPerCandidate />
+          </section>
+        </section>
+      </CandidatesProvider>
+    </main>
+  );
+}
 ```
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+I will learn useReducer hook
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Form controls](https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons) - This helped me recall how to properly implement form inputs and use the checked attribute effectively.
 
 ## Author
 
@@ -87,4 +90,4 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+A big thanks to the Make It Real team for their patience and support.

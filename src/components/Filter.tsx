@@ -44,7 +44,6 @@ function Filter() {
           onChange={selectAllCandidates}
           checked={selectedCandidates.length === candidates.length}
         />
-        <br />
         {candidates.map((candidate) => {
           return (
             <div key={candidate.name}>
@@ -57,7 +56,6 @@ function Filter() {
                 onChange={() => handleCandidateSelection(candidate.name)}
                 checked={selectedCandidates.includes(candidate.name)}
               />
-              <br />
             </div>
           );
         })}
