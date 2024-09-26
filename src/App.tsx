@@ -1,14 +1,14 @@
 import "./App.css";
+import Candidates from "./components/Candidates";
+import { CandidatesProvider } from "./components/Context";
 
 function App() {
   return (
     <main>
-      <section className="candidates">
-        <button>Candidato 1</button>
-        <button>Candidato 2</button>
-        <button>Candidato 3</button>
-        <button>Candidato 4</button>
-      </section>
+      <CandidatesProvider>
+        <Candidates />
+      </CandidatesProvider>
+
       <section className="results">
         <aside className="filters">
           <h2>Ver</h2>

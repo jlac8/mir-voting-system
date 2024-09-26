@@ -40,9 +40,9 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 ## My process
 
 1. Estructura con HTML y CSS
-2. Componentes de candidatos
-3. Componente para ver votos
-4. Componentes para filtrar
+2. Funcionalidad de votar
+3. Funcionalidad para ver votos
+4. Funcionalidad para filtrar
 
 ### Built with
 

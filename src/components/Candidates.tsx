@@ -1,13 +1,18 @@
 import Candidate from "./Candidate";
-
-const candidates = ["juan", "heberth", "victor", "jaqueline"];
+import { useCandidates } from "./Context";
 
 function Candidates() {
+  const { candidates, handleVote } = useCandidates();
+
   return (
-    <section>
-      {candidates.map((candidate: string, index: number) => {
-        return <Candidate key={index} candidateName={candidate} />;
-      })}
+    <section className="candidates">
+      {candidates.map((candidate) => (
+        <Candidate
+          key={candidate.id}
+          candidate={candidate}
+          onHandleVote={() => handleVote(candidate.id)}
+        />
+      ))}
     </section>
   );
 }
