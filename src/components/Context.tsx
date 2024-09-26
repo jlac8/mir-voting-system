@@ -12,6 +12,8 @@ interface CandidatesContextType {
   candidates: CandidateType[];
   handleVote: (id: number) => void;
   totalVotes: number;
+  isPercentage: boolean;
+  handleFilter: () => void;
 }
 
 const CandidatesContext = createContext<CandidatesContextType | undefined>(
@@ -21,6 +23,7 @@ const CandidatesContext = createContext<CandidatesContextType | undefined>(
 export const CandidatesProvider = ({ children }: { children: ReactNode }) => {
   const [candidates, setCandidates] = useState(INITIAL_STATE);
   const [totalVotes, setTotalVotes] = useState(0);
+  const [isPercentage, setIsPercentage] = useState(true);
 
   function handleVote(id: number): void {
     setCandidates((prevCandidates) =>
@@ -34,10 +37,16 @@ export const CandidatesProvider = ({ children }: { children: ReactNode }) => {
     console.log(totalVotes);
   }
 
+  function handleFilter(): void {
+    setIsPercentage(!isPercentage);
+  }
+
   const store = {
     candidates,
     handleVote,
     totalVotes,
+    isPercentage,
+    handleFilter,
   };
 
   return (
