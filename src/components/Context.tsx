@@ -11,6 +11,7 @@ const INITIAL_STATE: CandidateType[] = [
 interface CandidatesContextType {
   candidates: CandidateType[];
   handleVote: (id: number) => void;
+  totalVotes: number;
 }
 
 const CandidatesContext = createContext<CandidatesContextType | undefined>(

@@ -1,12 +1,18 @@
 import "./App.css";
 import Candidates from "./components/Candidates";
 import { CandidatesProvider } from "./components/Context";
+import TotalVotes from "./components/TotalVotes";
+import VotesPerCandidate from "./components/VotesPerCandidate";
 
 function App() {
   return (
     <main>
       <CandidatesProvider>
         <Candidates />
+        <section className="votes">
+          <TotalVotes />
+          <VotesPerCandidate />
+        </section>
       </CandidatesProvider>
 
       <section className="results">
@@ -67,28 +73,6 @@ function App() {
             <br />
           </form>
         </aside>
-        <section className="votes">
-          <section>
-            <h2>
-              Total de Votos: <span>400</span>
-            </h2>
-          </section>
-          <section>
-            <h2>Resultados</h2>
-            <p>
-              Candidato 1: <span>100</span>
-            </p>
-            <p>
-              Candidato 2: <span>100</span>
-            </p>
-            <p>
-              Candidato 3: <span>100</span>
-            </p>
-            <p>
-              Candidato 4: <span>100</span>
-            </p>
-          </section>
-        </section>
       </section>
     </main>
   );
