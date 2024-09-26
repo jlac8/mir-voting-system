@@ -1,0 +1,1 @@
+.candidates{display:flex;justify-content:space-between}.results{display:flex;gap:30px}.filters{display:flex;flex-direction:column;gap:10px}.votes{flex-grow:1}body{margin:0;min-width:320px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
