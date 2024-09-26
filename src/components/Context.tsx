@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { CandidateType } from "../interfaces/CandidateType";
 
 const INITIAL_STATE: CandidateType[] = [
@@ -14,6 +20,9 @@ interface CandidatesContextType {
   totalVotes: number;
   isPercentage: boolean;
   handleFilter: () => void;
+  selectedCandidates: string[];
+  handleCandidateSelection: (name: string) => void;
+  selectAllCandidates: () => void;
 }
 
 const CandidatesContext = createContext<CandidatesContextType | undefined>(
@@ -24,6 +33,11 @@ export const CandidatesProvider = ({ children }: { children: ReactNode }) => {
   const [candidates, setCandidates] = useState(INITIAL_STATE);
   const [totalVotes, setTotalVotes] = useState(0);
   const [isPercentage, setIsPercentage] = useState(true);
+  const [selectedCandidates, setSelectedCandidates] = useState<string[]>([]);
+
+  useEffect(() => {
+    setSelectedCandidates(candidates.map((candidate) => candidate.name));
+  }, [candidates]);
 
   function handleVote(id: number): void {
     setCandidates((prevCandidates) =>
@@ -34,11 +48,26 @@ export const CandidatesProvider = ({ children }: { children: ReactNode }) => {
       )
     );
     setTotalVotes(totalVotes + 1);
-    console.log(totalVotes);
   }
 
   function handleFilter(): void {
     setIsPercentage(!isPercentage);
+  }
+
+  function handleCandidateSelection(name: string): void {
+    setSelectedCandidates((prevSelected) =>
+      prevSelected.includes(name)
+        ? prevSelected.filter((candidate) => candidate !== name)
+        : [...prevSelected, name]
+    );
+  }
+
+  function selectAllCandidates(): void {
+    if (selectedCandidates.length === candidates.length) {
+      setSelectedCandidates([]); // Deselect all
+    } else {
+      setSelectedCandidates(candidates.map((candidate) => candidate.name)); // Select all
+    }
   }
 
   const store = {
@@ -47,6 +76,9 @@ export const CandidatesProvider = ({ children }: { children: ReactNode }) => {
     totalVotes,
     isPercentage,
     handleFilter,
+    selectedCandidates,
+    handleCandidateSelection,
+    selectAllCandidates,
   };
 
   return (

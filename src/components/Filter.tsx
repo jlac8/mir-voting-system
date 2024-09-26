@@ -1,7 +1,14 @@
 import { useCandidates } from "./Context";
 
 function Filter() {
-  const { isPercentage, handleFilter } = useCandidates();
+  const {
+    isPercentage,
+    handleFilter,
+    candidates,
+    selectedCandidates,
+    handleCandidateSelection,
+    selectAllCandidates,
+  } = useCandidates();
 
   return (
     <aside className="filters">
@@ -30,44 +37,30 @@ function Filter() {
       </label>
       <form>
         <label htmlFor="selectAll">Todos:</label>
-        <input type="checkbox" id="selectAll" name="selectAll" />
-        <br />
-
-        <label htmlFor="candidate1">Candidato 1:</label>
         <input
           type="checkbox"
-          id="candidate1"
-          name="candidate"
-          value="candidate1"
+          id="selectAll"
+          name="selectAll"
+          onChange={selectAllCandidates}
+          checked={selectedCandidates.length === candidates.length}
         />
         <br />
-
-        <label htmlFor="candidate2">Candidato 2:</label>
-        <input
-          type="checkbox"
-          id="candidate2"
-          name="candidate"
-          value="candidate2"
-        />
-        <br />
-
-        <label htmlFor="candidate3">Candidato 3:</label>
-        <input
-          type="checkbox"
-          id="candidate3"
-          name="candidate"
-          value="candidate3"
-        />
-        <br />
-
-        <label htmlFor="candidate4">Candidato 4:</label>
-        <input
-          type="checkbox"
-          id="candidate4"
-          name="candidate"
-          value="candidate4"
-        />
-        <br />
+        {candidates.map((candidate) => {
+          return (
+            <div key={candidate.name}>
+              <label htmlFor={candidate.name}>{candidate.name}:</label>
+              <input
+                type="checkbox"
+                id={candidate.name}
+                name="candidate"
+                value={candidate.name}
+                onChange={() => handleCandidateSelection(candidate.name)}
+                checked={selectedCandidates.includes(candidate.name)}
+              />
+              <br />
+            </div>
+          );
+        })}
       </form>
     </aside>
   );
